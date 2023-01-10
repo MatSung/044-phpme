@@ -1,8 +1,7 @@
 <?php
 
-// Naudojant PHP išveskite į naršyklę: "My name is {vardas}. My age is {amžius}"
+// Panaudojus "Execution operator" parodykite opėracinės sistemos informaciją, kurioje veikia PHP
 
-$name = "Matas";
-$age = 23;
+$info = `cat /etc/os-release`;
 
-echo('My name is {' . $name . '}. My age is {' . $age . '}');
+echo $info;

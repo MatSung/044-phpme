@@ -1,16 +1,41 @@
 <?php
 
-// Sukurkite dvimatį masyvą. Pirmieji du raktai yra lt ir en.
 
-// Raktai turi savaitės dienų vardų masyvus lietuviškai ir angliškai.
 
-// Naudodamiesi šiuo masyvu, pirmadienį parodykite lietuvių kalba, o trečiadienį - anglų kalba.
 
-// Sukurkite kintamuosius lang (reikšmės lt arba en) ir parodykite dieną
+// Parašykite funkciją, kuri grąžina skaičiaus kvadratą. Skaičius perduodamas kaip parametras.
+	
+// Parašykite funkciją, kuri grąžina dviejų skaičių sumą. Skaičiai perduodami funkcijos parametrus.
+	
+// Parašykite funkciją, kuri iš antro parametro atima pirmą ir padalija iš trečio.
+	
+// Parašykite funkciją, kuri priima kaip parametrą skaičių nuo 1 iki 7, o grąžina savaitės dieną lietuvių kalba.
 
-$arr = [
+function sqr($number){
+    return pow($number,2);
+}
 
-    'lt' => [
+echo sqr(2);
+
+echo '<br>';
+
+function sum($number, $number2){
+    return $number + $number2;
+}
+
+echo sum(1,2);
+
+
+echo '<br>';
+
+function someMath($number1, $number2, $number3){
+    return ($number2 - $number1) / $number3;
+}
+
+echo someMath(4,5,1);
+
+function dayOfTheWeek($number){
+    $arr = [
         'Pirmadienis',
         'Antradienis',
         'Trečiadienis',
@@ -18,23 +43,11 @@ $arr = [
         'Penktadienis',
         'Šeštadienis',
         'Sekmadienis'
-    ],
-    'en' => [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday'
-    ]
-];
+    ];
+    return $arr[$number-1];
+}
 
-echo $arr['lt'][0];
+
 echo '<br>';
-echo $arr['en'][2];
-echo '<br><br>';
 
-$lang = 'lt';
-
-echo $arr[$lang][date('N')-1];
+echo dayOfTheWeek(1);

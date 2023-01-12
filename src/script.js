@@ -4,13 +4,13 @@ let nameInput = document.getElementById("name-input");
 
 function submitForm() {
     let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","app.php?name=" + nameInput.value, true);
+    xmlhttp.open("POST","app.php", true);
     xmlhttp.onreadystatechange = () => {
         if(xmlhttp.status == 200){
             responseSpan.innerText = xmlhttp.responseText;
         }
     }
-    xmlhttp.send();
+    xmlhttp.send("name="+nameInput.value);
     console.log("sent");
 }
 

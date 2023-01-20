@@ -1,20 +1,23 @@
-let submitButton = document.getElementById("submit-button");
+let multipleSubmitButton = document.getElementById("multiple-image-submit-button");
+let singleSubmitButton = document.getElementById("single-image-submit-button");
 let carouselInner = document.getElementById("carousel-inner");
-let fileInput = document.getElementById("file-input");
+let multipleFileInput = document.getElementById("multiple-file-input");
+let singleFileInput =  document.getElementById("single-file-input");
 let fetchingDiv = document.getElementById("fetching");
 let carousel = document.getElementById("carousel");
 
 function handleResponseData(data){
-
-    // check if error
-
-    fetchingDiv.hidden = true;
-    carouselInner.querySelector(".active img").src = data.shift();
-    data.forEach(element => {
-        carouselInner.append(generateCarouselItem(element));
-    });
-    carousel.hidden = false;
-
+    console.log(data);
+    let pathList = data.path;
+    let errorList = data.error;
+    if(data.request == 'multiple'){
+        fetchingDiv.hidden = true;
+        pathList.forEach(element => {
+            carouselInner.append(generateCarouselItem(element));
+        });
+        carouselInner.firstElementChild.classList.add("active");
+        carousel.hidden = false;
+    }
 }
 
 function generateCarouselItem(url){
@@ -30,11 +33,12 @@ function generateCarouselItem(url){
     return carouselItem;
 }
 
-async function submitForm() {
+async function submitForm(key,button, fileInput) {
     fileInput.disabled = true;
-    submitButton.disabled = true;
+    button.disabled = true;
     const url = '/upload.php';
     const formData = new FormData();
+    formData.append("command", key);
     for (let i = 0; i < fileInput.files.length; i++) {
         formData.append(fileInput.name, fileInput.files[i]);
     }
@@ -55,5 +59,5 @@ async function submitForm() {
 }
 
 
-
-submitButton.addEventListener("click", () => submitForm());
+multipleSubmitButton.addEventListener("click", () => submitForm("multiple",multipleSubmitButton, multipleFileInput));
+singleSubmitButton.addEventListener('click', () => submitForm("single",singleSubmitButton, singleFileInput));

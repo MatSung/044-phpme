@@ -5,7 +5,8 @@ require_once 'random-string.php';
 require_once 'resizer.php';
 
 define('UPLOAD_DIR', __DIR__ . '/../uploads');
-define('ALLOWED_EXTENSIONS', ['png']);
+define('ALLOWED_EXTENSIONS', ['png', 'jpg', 'jpeg']);
+define('ERROR_IMG_PATH', 'logos/error.png');
 
 $data = [
     'name' => $_POST['name'] ?? 'error',
@@ -55,13 +56,13 @@ if(isset($_FILES['picture'])){
 $imageProfilePath = __DIR__ . '/../generated-profiles';
 $imageProfilePath = generateFileName($imageProfilePath,'png');
 
-if(applyData($data['name'], $data['surname'], $data['languages'], $imageProfilePath, $path)){
+if(applyData($data['name'], $data['surname'], $data['languages'], $imageProfilePath, $path, $ext)){
     $data['final'] = str_replace('/app', '', $imageProfilePath);
 }
 
 http_response_code(200);
 
-header('Content-Type: application/jason');
+header('Content-Type: application/json');
 
 echo json_encode($data);
 exit;

@@ -12,11 +12,15 @@ function imageResize($image, $w, $h)
     return $temp;
 }
 
-function applyData($name, $surname, $languages, $pathToImage, $uploadedPhoto)
+function applyData($name, $surname, $languages, $pathToImage, $uploadedPhoto, $ext)
 {
     $font = '/../fonts/UbuntuCondensed-Regular.ttf';
 
     $blankImage = imagecreatetruecolor(500, 250);
+
+    // nesuveike
+    imagealphablending($blankImage, false);
+    imagesavealpha($blankImage, true);
 
     $backgroundColor = imagecolorallocate($blankImage, 240, 240, 240);
 
@@ -29,7 +33,19 @@ function applyData($name, $surname, $languages, $pathToImage, $uploadedPhoto)
 
     $textColor = imagecolorallocate($blankImage, 10, 10, 10);
 
-    $testImage = imagecreatefrompng($uploadedPhoto);
+    if($ext == 'png'){
+        $testImage = imagecreatefrompng($uploadedPhoto);
+    } else if ($ext == 'jpg' || $ext == 'jpeg'){
+        $testImage = imagecreatefromjpeg($uploadedPhoto);
+    } else {
+        $testImage = imagecreatefrompng('../'.ERROR_IMG_PATH);
+    }
+
+
+    // nesuveike
+
+    imagealphablending($testImage, false);
+    imagesavealpha($testImage, true);
 
     $testImage = imageResize($testImage, 100, 100);
 

@@ -42,8 +42,6 @@ function applyData($name, $surname, $languages, $pathToImage, $uploadedPhoto, $e
     }
 
 
-    // nesuveike
-
     imagealphablending($testImage, false);
     imagesavealpha($testImage, true);
 

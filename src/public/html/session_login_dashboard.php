@@ -1,5 +1,7 @@
 <?php
 
+define('TIME_FORMAT', 'Y-m-d\\ H:i:s');
+
 function redirectToLogin($reason)
 {
     header("Location: session_login.php?reason=$reason");
@@ -42,7 +44,7 @@ function login($users)
             if ($key['username'] === $_POST['username']) {
                 if ($key['password'] === $_POST['password']) {
                     $_SESSION['user'] = $key['username'];
-                    $_SESSION['timestamp'] = time();
+                    $_SESSION['timestamp'] = date(TIME_FORMAT);
                     return true;
                 } else {
                     return false;
@@ -87,6 +89,12 @@ for ($i = 0; $i < count($users); $i++) {
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
+
+<style>
+    body {
+        margin-top: 20px;
+    }
+</style>
 
 <body>
     <div class="container">

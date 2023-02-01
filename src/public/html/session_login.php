@@ -27,7 +27,7 @@ if (isset($_SESSION['user'])) {
     <div class="container">
         <div class="card my-2">
             <div class="card-header">
-                Login
+                Login (user1 password, user2 password, user3 password)
             </div>
             <div class="card-body">
                 <form action="session_login_dashboard.php" method="post">

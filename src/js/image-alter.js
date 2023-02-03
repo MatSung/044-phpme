@@ -29,7 +29,7 @@ async function sendData(){
     
     //loading data
 
-    const url = '/php/gdtest.php';
+    const url = '?page=profile-image';
     const response = await fetch(url, {
         method: 'POST',
         cache: 'no-cache',

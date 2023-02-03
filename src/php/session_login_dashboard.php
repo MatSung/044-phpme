@@ -4,7 +4,7 @@ define('TIME_FORMAT', 'Y-m-d\\ H:i:s');
 
 function redirectToLogin($reason)
 {
-    header("Location: session_login.php?reason=$reason");
+    header("Location: ?page=session_login&reason=$reason");
     die();
 }
 
@@ -61,7 +61,7 @@ if (isset($_POST['logout'])) {
     logout();
 }
 
-$users = file_get_contents('../../json/users.json');
+$users = file_get_contents('../json/users.json');
 $users = json_decode($users, TRUE);
 $users = $users['users'];
 
@@ -108,7 +108,7 @@ for ($i = 0; $i < count($users); $i++) {
                 </ul>
             </div>
             <div class="card-footer">
-                <form action="session_login_dashboard.php" method='POST'>
+                <form action="?page=session_login_dashboard" method='POST'>
                     <button class='btn btn-danger' name='logout'>Logout</button>
                 </form>
             </div>

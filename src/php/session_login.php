@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header("Location: session_login_dashboard.php");
+    header("Location: ?page=session_login_dashboard");
     die();
 }
 ?>
@@ -30,7 +30,7 @@ if (isset($_SESSION['user'])) {
                 Login (user1 password, user2 password, user3 password)
             </div>
             <div class="card-body">
-                <form action="session_login_dashboard.php" method="post">
+                <form action="?page=session_login_dashboard" method="post">
                     <div class="mb-3 row">
                         <label for="username-input" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">

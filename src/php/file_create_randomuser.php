@@ -31,7 +31,9 @@ function array_flat($array, $prefix = '')
 
 $flattenedArray = array_flat($details);
 
-$handle = fopen('myfile.csv', 'a');
+
+$fileLocation = 'myfile.csv';
+$handle = fopen($fileLocation, 'a');
 
 $arrayKeys = array_keys($flattenedArray);
 $arrayValues = array_values($flattenedArray);
@@ -46,4 +48,4 @@ foreach ($finalArray as $fields) {
 
 fclose($handle);
 
-echo "success";
+echo "success, file saved in $fileLocation";

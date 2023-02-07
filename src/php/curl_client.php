@@ -1,17 +1,5 @@
 <?php
-$cURLConnection = curl_init();
-curl_setopt($cURLConnection, CURLOPT_URL, 'https://randomuser.me/api/');
-curl_setopt($cURLConnection, CURLOPT_RETURNTRANSFER, true);
-$apiData = curl_exec($cURLConnection);
-curl_close($cURLConnection);
-try {
-    $details = json_decode($apiData, 1)['results'][0];
-} catch (Exception $e) {
-    echo 'Fetch failed with error: ' . $e;
-    die();
-}
 
-// https://stackoverflow.com/questions/9546181/flatten-multidimensional-array-concatenating-keys
 function array_flat($array, $prefix = '')
 {
     $result = array();
@@ -28,8 +16,16 @@ function array_flat($array, $prefix = '')
     return $result;
 }
 
-$flattenedArray = array_flat($details);
+$url = 'http://nginx/php/curl_server.php';
+//curl myself
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$result = curl_exec($ch);
+curl_close($ch);
 
+$details = json_decode($result, 1)['results'][0];
+
+$flattenedArray = array_flat($details);
 
 $fileLocation = 'myfile.csv';
 $handle = fopen($fileLocation, 'a');
@@ -37,10 +33,10 @@ $handle = fopen($fileLocation, 'a');
 $arrayKeys = array_keys($flattenedArray);
 $arrayValues = array_values($flattenedArray);
 
-$finalArray = array(
+$finalArray = [
     $arrayKeys,
     $arrayValues
-);
+];
 foreach ($finalArray as $fields) {
     fputcsv($handle, $fields);
 }

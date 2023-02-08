@@ -1,8 +1,14 @@
 <?php
 
-//Parašyti PHP klasę, kuri parašytų “Sveiki, mano vardas yra {vardas}”, kur {vardas} būtų metodo argumento vertė klasės viduje
+require_once(__DIR__ . '/classes/Person.php');
 
-require_once(__DIR__ . '/classes/newClass.php');
+$persons = [
+    new Person('Dzhonas', 'Vickas', 45),
+    new Person('Ponas', 'makaronas', 19),
+    new Person('Tavo', 'Tevai', 100)
+];
 
-$myClass = new newClass('Dzhonas');
-$myClass->getName();
+foreach ($persons as $person) {
+    $details = $person->getDetails();
+    echo $details['name'] . ' ' . $details['surname'] . ' ' . $details['age'] . '<br>';
+}

@@ -2,13 +2,16 @@
 
 require_once(__DIR__ . '/classes/Person.php');
 
+require_once(__DIR__ . '/classes/Programmer.php');
+require_once(__DIR__ . '/classes/Teacher.php');
+require_once(__DIR__ . '/classes/Student.php');
+
 $persons = [
-    new Person('Dzhonas', 'Vickas', 45),
-    new Person('Ponas', 'makaronas', 19),
-    new Person('Tavo', 'Tevai', 100)
+    new Programmer('Dzhonas'),
+    new Student('Ponas'),
+    new Teacher('Tavo')
 ];
 
 foreach ($persons as $person) {
-    $details = $person->getDetails();
-    echo $details['name'] . ' ' . $details['surname'] . ' ' . $details['age'] . '<br>';
+    echo $person->greetings() . '<br>';
 }

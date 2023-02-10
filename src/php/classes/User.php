@@ -1,21 +1,25 @@
 <?php
 class User{
-    public ?string $name = NULL;
-	public static ?int $age = NULL;
-	public const PROFESSION = 'DEV';
+	function __construct(
+        private ?string $name = null,
+		private ?int $age = null
+    ) {
+    }
 
 	public function setName(string $name): void
 	{
 		$this->name = $name;
 	}
-
-	public static function setAge(int $age): void
+	public function getName(): ?string
 	{
-		self::$age = $age;
+		return $this->name;
 	}
-
-	public function getGreetings(): string
+	public function setAge(int $age): void
 	{
-		return sprintf("Hello, My name is %s. I'm %d yeas old.", $this->name, self::$age);
+		$this->age = $age;
+	}
+	public function getAge(): ?int
+	{
+		return $this->age;
 	}
 }

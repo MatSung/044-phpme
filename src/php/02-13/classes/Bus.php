@@ -1,10 +1,10 @@
 <?php
-class Plane extends Vehicle{
+class Bus extends Vehicle{
     function __construct(
         private string $make,
         private string $model,
         private int $year,
-        private int $wheels
+        protected ?int $wheels
     )
     {
         parent::__construct($make, $model, $year);
@@ -13,6 +13,6 @@ class Plane extends Vehicle{
 
     public function getFuelType(): array
     {
-        return [5];
+        return [2, 3];
     }
 }

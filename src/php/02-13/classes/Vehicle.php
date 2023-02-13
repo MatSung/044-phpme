@@ -2,9 +2,9 @@
 class Vehicle{
     protected ?int $wheels;
     function __construct(
-        private ?string $make,
-        private ?string $model,
-        private ?int $year
+        private string $make,
+        private string $model,
+        private int $year
     ){
 
     }

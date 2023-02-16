@@ -21,7 +21,8 @@ class SessionManager
         }
     }
 
-    public function clearTimestamps($data){
+    public function clearTimestamps($data): array
+    {
         //clean timestamps older than 1 minute
         for ($i=1; $i < count($data); $i++) { 
             if(time() - $data[$i] > $this->hitTimer){

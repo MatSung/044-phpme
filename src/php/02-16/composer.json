@@ -1,0 +1,16 @@
+{
+    "name": "codeacademy/traits",
+    "type": "project",
+    "license": "Beerware",
+    "authors": [
+        {
+            "name": "Kiril",
+            "email": "hello@nonamez.name"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"   
+        }
+    }
+}

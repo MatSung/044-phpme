@@ -1,0 +1,19 @@
+{
+    "name": "root/02-18",
+    "description": "none",
+    "license": "beerware",
+    "autoload": {
+        "psr-4": {
+            "Root\\0218\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matas"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.11",
+        "slim/psr7": "^1.6"
+    }
+}

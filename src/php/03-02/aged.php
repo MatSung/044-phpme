@@ -1,13 +1,5 @@
 <?php
 
-function dd() {
-    array_map(function($x) {
-        var_dump($x);
-    }, func_get_args());
-
-    die(0);
-}
-
 try {
 	$dsn = 'mysql:host=mariadb;dbname=' . getenv('MYSQL_DATABASE');
 

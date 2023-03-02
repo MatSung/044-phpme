@@ -1,5 +1,13 @@
 <?php
 
+function dd() {
+    array_map(function($x) {
+        var_dump($x);
+    }, func_get_args());
+
+    die(0);
+}
+
 try {
 	$dsn = 'mysql:host=mariadb;dbname=' . getenv('MYSQL_DATABASE');
 
@@ -11,12 +19,12 @@ try {
     // $dbh->query(file_get_contents('sql/create.sql'));
     // $dbh->query(file_get_contents('sql/insert.sql')); 
         
-    printf('Success PDO: %s', $dbh->getAttribute(PDO::ATTR_CONNECTION_STATUS));
+    // printf('Success PDO: %s', $dbh->getAttribute(PDO::ATTR_CONNECTION_STATUS));
 } catch (PDOException $e) {
     print "Error!: " . $e->getMessage() . "<br/>";
 }
 
-echo "\n";
+// echo "\n";
 
 // Naudojant PDO ištraukite 13 naujausiu pilnamečių vartotojų.
 
@@ -40,4 +48,4 @@ $stmt->execute();
 
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-var_dump($users);
+var_export($users);

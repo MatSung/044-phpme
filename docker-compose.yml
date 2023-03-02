@@ -24,4 +24,24 @@ services:
         working_dir: /app
         volumes:
             - ./src:/app
+        env_file:
+           - .env
         # tty: true
+    mysql:
+        container_name: ca-mysql
+        image: mysql:8.0
+        env_file:
+           - .env
+        volumes:
+            - ./docker/mysql/data/mysql:/var/lib/mysql
+        ports:
+            - 3307:3306 
+    mariadb:
+        container_name: ca-mariadb
+        image: mariadb:10.0
+        env_file:
+           - .env
+        volumes:
+            - ./docker/mysql/data/mariadb:/var/lib/mysql
+        ports:
+            - 3308:3306
